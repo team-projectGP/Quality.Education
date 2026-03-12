@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Education · SDG 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* SDG 4 brand colors: orange / gold */
+        :root {
+            --sdg-orange: #f39c12;
+            --sdg-dark: #c9760e;
+            --sdg-light: #fde3a7;
+            --accent-blue: #1e6f9f;
+        }
+
+        /* header / navigation */
+        .top-bar {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--sdg-orange);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .sdg-badge {
+            background: var(--sdg-orange);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--sdg-orange);
+            color: #0f172a;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(135deg, #fff6e5, #fff);
+            border-radius: 32px;
+            padding: 3rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 12px 30px rgba(243, 156, 18, 0.08);
+            border: 1px solid rgba(243, 156, 18, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 800px;
+            color: #1e293b;
+        }
+
+        .hero-highlight {
+            color: var(--sdg-orange);
+            border-bottom: 4px solid var(--sdg-light);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #475569;
+            margin-top: 1.5rem;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            font-weight: 600;
+            border: 1px solid #e9eef2;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--sdg-orange);
+            margin-right: 8px;
+        }
+
+        /* cards / sections */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin: 3rem 0 1.5rem 0;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 70%;
+            height: 4px;
+            background: var(--sdg-light);
+            border-radius: 4px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #edf2f7;
+            transition: 0.2s;
+        }
+        .card:hover {
+            border-color: var(--sdg-orange);
+            box-shadow: 0 20px 35px rgba(243, 156, 18, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .pill {
+            background: #f1f5f9;
+            color: #1e293b;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* impact numbers */
+        .impact-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--sdg-orange);
+            line-height: 1.2;
+        }
+
+        /* call to action / form */
+        .cta-box {
+            background: #1e293b;
+            color: white;
+            border-radius: 40px;
+            padding: 3.5rem 3rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-box p {
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .button {
+            background: var(--sdg-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: var(--sdg-dark);
+            transform: scale(1.02);
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+        }
+
+        .gp-team {
+            font-weight: 600;
+            color: var(--sdg-orange);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-area">
+            <span class="sdg-badge">SDG 4 · QUALITY EDUCATION</span>
+            <span style="color:#64748b; font-weight:400;">GP Team Project</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Research</a>
+            <a href="#">Initiatives</a>
+            <a href="#">Resources</a>
+            <a href="#">Team</a>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <h1>
+                Education is the <span class="hero-highlight">most powerful weapon</span> which you can use to change the world.
+            </h1>
+            <p>
+                Sustainable Development Goal 4 aims to ensure inclusive and equitable quality education and promote lifelong learning opportunities for all by 2030.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">258</span> million children out of school</div>
+                <div class="stat-item"><span class="stat-number">617</span> million youth lack basic math/literacy</div>
+                <div class="stat-item"><span class="stat-number">1 in 5</span> children not in school</div>
+            </div>
+        </div>
+
+        <!-- WHAT IS QUALITY EDUCATION? -->
+        <h2 class="section-title">What is quality education?</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Beyond the classroom</h3>
+                <p>Quality education means safe, stimulating environments, well-trained teachers, and inclusive access — regardless of gender, disability, or background.</p>
+                <div class="pill-list">
+                    <span class="pill">literacy & numeracy</span>
+                    <span class="pill">life skills</span>
+                    <span class="pill">digital inclusion</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Global challenge</h3>
+                <p>Sub‑Saharan Africa has the highest rates of exclusion. Girls, children with disabilities, and crisis‑affected kids are most at risk.</p>
+                <div class="impact-number">+ 69M teachers needed</div>
+                <div style="margin-top:0.8rem; color:#475569;">to reach 2030 goals</div>
+            </div>
+        </div>
+
+        <!-- PILLARS / TARGETS -->
+        <h2 class="section-title">Key targets (SDG 4.1 – 4.7)</h2>
+        <div class="grid-2">
+            <div class="card">
+                <span style="background: #f39c1220; padding:0.2rem 1rem; border-radius:30px; font-weight:600;">4.1</span>
+                <h3 style="margin-top:0.8rem;">Primary & secondary</h3>
+                <p>All girls and boys complete free, equitable, and quality primary and secondary education.</p>
+            </div>
+            <div class="card">
+                <span style="background: #f39c1220; padding:0.2rem 1rem; border-radius:30px; font-weight:600;">4.4</span>
+                <h3 style="margin-top:0.8rem;">Skills for work</h3>
+                <p>Increase number of youth/adults with relevant skills (including technical/vocational) for employment and entrepreneurship.</p>
+            </div>
+            <div class="card">
+                <span style="background: #f39c1220; padding:0.2rem 1rem; border-radius:30px; font-weight:600;">4.5</span>
+                <h3 style="margin-top:0.8rem;">Eliminate disparities</h3>
+                <p>Equal access for vulnerable people, including persons with disabilities, indigenous peoples, and children in conflict zones.</p>
+            </div>
+            <div class="card">
+                <span style="background: #f39c1220; padding:0.2rem 1rem; border-radius:30px; font-weight:600;">4.7</span>
+                <h3 style="margin-top:0.8rem;">Global citizenship</h3>
+                <p>Education for sustainable development, human rights, gender equality, and peace.</p>
+            </div>
+        </div>
+
+        <!-- WHY IT MATTERS (inspired by your Minecraft research style) -->
+        <h2 class="section-title">Why education transforms lives</h2>
+        <div style="background: #f8f2e9; border-radius: 30px; padding: 2rem; margin: 1.5rem 0;">
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+                <div style="flex: 1; min-width: 250px;">
+                    <span style="font-size: 3rem;">🧠</span>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">Cognitive & economic ripple</h3>
+                    <p>Each year of schooling raises earnings by 10% on average. Educated mothers are more than twice as likely to send their children to school.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <ul style="list-style-type: none; font-size: 1.1rem;">
+                        <li style="margin-bottom: 1rem;">✅ 420 million people would be lifted from poverty if all adults completed secondary school.</li>
+                        <li style="margin-bottom: 1rem;">✅ Child marriage drops — girls with secondary education are 6x less likely to marry early.</li>
+                        <li>✅ More resilient communities, lower inequality.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEAM PROJECT SECTION -->
+        <h2 class="section-title">Our GP team project</h2>
+        <div class="grid-2">
+            <div class="card" style="background: #fcf9f7;">
+                <h3>📖 What we're doing</h3>
+                <p>We're creating open‑access learning materials and awareness campaigns about SDG 4. Our focus: digital tools for remote communities and tutoring support.</p>
+                <div class="pill-list">
+                    <span class="pill">workshops</span>
+                    <span class="pill">podcast</span>
+                    <span class="pill">resource hub</span>
+                </div>
+            </div>
+            <div class="card" style="background: #fcf9f7;">
+                <h3>👥 Get involved</h3>
+                <p>Contact us to collaborate, volunteer as a tutor, or share your ideas. We meet every Friday 4pm (online).</p>
+                <div style="margin-top: 1.8rem;">
+                    <span style="font-weight:600;">✉️ gp.qualityedu@example.org</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION / MAILING LIST -->
+        <div class="cta-box">
+            <h2>Learning never exhausts the mind.</h2>
+            <p>Join our newsletter for SDG 4 resources, facts, and local initiatives.</p>
+            <form style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; max-width: 500px; margin: 0 auto;">
+                <input type="email" placeholder="Your email address" style="flex: 1 1 250px; padding: 1rem 1.5rem; border-radius: 60px; border: none; font-size: 1rem;">
+                <button class="button" type="button">Subscribe</button>
+            </form>
+            <p style="font-size:0.9rem; margin-top: 1.5rem; opacity:0.8;">We respect your privacy — no spam.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="gp-team">GP Team · Quality Education Project</p>
+        <p>In support of United Nations Sustainable Development Goal 4</p>
+        <p style="margin-top: 1.5rem; font-size:0.9rem;">📅 2026 · built for global awareness · open source</p>
+        <p>❤️ Inspired by the idea that every child deserves a quality education</p>
+    </footer>
+</body>
+</html>
